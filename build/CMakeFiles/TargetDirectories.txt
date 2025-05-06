@@ -1,0 +1,3 @@
+/home/pedro/ReactorSim/build/CMakeFiles/ReactorSim.dir
+/home/pedro/ReactorSim/build/CMakeFiles/edit_cache.dir
+/home/pedro/ReactorSim/build/CMakeFiles/rebuild_cache.dir

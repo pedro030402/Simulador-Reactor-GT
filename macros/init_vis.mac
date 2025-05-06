@@ -1,0 +1,55 @@
+/run/verbose 1
+/event/verbose 1
+/tracking/verbose 1
+
+
+
+# ========== Inicializa ==========
+/run/initialize
+
+# ========== Lanzar eventos ==========
+/run/beamOn 34500000
+
+
+
+#/run/verbose 1
+#/event/verbose 1
+#/tracking/verbose 1
+
+
+
+## ========== Inicializa ==========
+#/run/initialize
+## Crear escena y handler
+#/vis/open TSG
+#/vis/viewer/set/viewpointThetaPhi 90 180
+#/vis/scene/create
+#/vis/drawVolume
+#/vis/scene/add/trajectories smooth
+#/vis/scene/add/volume
+#/vis/scene/add/axes 0 0 0 10 cm
+#/vis/sceneHandler/create
+#/vis/sceneHandler/attach
+#/vis/viewer/create              # 🟢 Crea el viewer
+#/vis/viewer/set/style wireframe # 🟢 Aquí colocas wireframe
+## 
+
+## # ========== Viewer ==========
+#/vis/viewer/set/viewpointThetaPhi 45 45
+#/vis/viewer/set/style surface
+#/vis/viewer/set/lineSegmentsPerCircle 100
+#/vis/viewer/set/background white
+#/vis/viewer/set/hiddenEdge 1
+#/vis/viewer/set/autoRefresh true
+#/vis/viewer/flush
+
+## # ========== Trayectorias ==========
+#/tracking/storeTrajectory 1
+#/vis/modeling/trajectories/create/drawByCharge
+#/vis/modeling/trajectories/drawByCharge-0/set neutron red
+#/vis/scene/add/trajectories
+
+## # ========== Lanzar eventos ==========
+#/run/beamOn 100000
+## Si quieres revisar evento por evento:
+#/vis/reviewKeptEvents
