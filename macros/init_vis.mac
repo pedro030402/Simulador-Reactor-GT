@@ -1,55 +1,51 @@
-/run/verbose 1
-/event/verbose 1
-/tracking/verbose 1
+# Verbosidad de salida: información detallada de ejecuciones
+/run/verbose 1         # Nivel de detalle para información de corridas
+/event/verbose 1       # Nivel de detalle para cada evento
+/tracking/verbose 1    # Nivel de detalle para el seguimiento de partículas
 
-
-
-# ========== Inicializa ==========
-/run/initialize
+# ========== Inicialización de la simulación ==========
+/run/initialize       # Configura geometría, física y acciones de usuario
 
 # ========== Lanzar eventos ==========
-/run/beamOn 34500000
+/run/beamOn 34500000  # Ejecuta 34,500,000 eventos
 
+# (Bloque comentado: pasos para visualización interactiva)
 
+#/run/verbose 1                # Verbosidad de corrida (alternativa)
+#/event/verbose 1              # Verbosidad de evento (alternativa)
+#/tracking/verbose 1           # Verbosidad de tracking (alternativa)
 
-#/run/verbose 1
-#/event/verbose 1
-#/tracking/verbose 1
-
-
-
-## ========== Inicializa ==========
-#/run/initialize
+## ========== Inicializar visualización ===========
+#/run/initialize               # Inicializar antes de crear escena
 ## Crear escena y handler
-#/vis/open TSG
-#/vis/viewer/set/viewpointThetaPhi 90 180
-#/vis/scene/create
-#/vis/drawVolume
-#/vis/scene/add/trajectories smooth
-#/vis/scene/add/volume
-#/vis/scene/add/axes 0 0 0 10 cm
-#/vis/sceneHandler/create
-#/vis/sceneHandler/attach
-#/vis/viewer/create              # 🟢 Crea el viewer
-#/vis/viewer/set/style wireframe # 🟢 Aquí colocas wireframe
-## 
+#/vis/open TSG                 # Abrir contexto de visualización: Qt OpenGL (TSG)
+#/vis/viewer/set/viewpointThetaPhi 90 180  # Ajustar ángulo de cámara
+#/vis/scene/create             # Crear escena de visualización
+#/vis/drawVolume               # Dibujar volúmenes geométricos
+#/vis/scene/add/trajectories smooth  # Añadir trayectorias suaves
+#/vis/scene/add/volume         # Añadir volúmenes a la escena
+#/vis/scene/add/axes 0 0 0 10 cm       # Añadir ejes de referencia de 10 cm
+#/vis/sceneHandler/create      # Crear manejador de escena
+#/vis/sceneHandler/attach      # Asociar manejador a la escena
+#/vis/viewer/create            # 🟢 Crear la ventana de visualización
+#/vis/viewer/set/style wireframe # 🟢 Establecer estilo de render en alambre
 
-## # ========== Viewer ==========
-#/vis/viewer/set/viewpointThetaPhi 45 45
-#/vis/viewer/set/style surface
-#/vis/viewer/set/lineSegmentsPerCircle 100
-#/vis/viewer/set/background white
-#/vis/viewer/set/hiddenEdge 1
-#/vis/viewer/set/autoRefresh true
-#/vis/viewer/flush
+## ========== Configuración del viewer ==========
+#/vis/viewer/set/viewpointThetaPhi 45 45  # Cambiar ángulo de cámara
+#/vis/viewer/set/style surface            # Mostrar superficies sólidas
+#/vis/viewer/set/lineSegmentsPerCircle 100 # Definir resolución de círculos
+#/vis/viewer/set/background white         # Fondo blanco
+#/vis/viewer/set/hiddenEdge 1             # Mostrar bordes ocultos
+#/vis/viewer/set/autoRefresh true         # Actualización automática
+#/vis/viewer/flush                        # Renderizar cambios
 
-## # ========== Trayectorias ==========
-#/tracking/storeTrajectory 1
-#/vis/modeling/trajectories/create/drawByCharge
-#/vis/modeling/trajectories/drawByCharge-0/set neutron red
-#/vis/scene/add/trajectories
+## ========== Trayectorias detalladas ==========
+#/tracking/storeTrajectory 1                  # Almacenar trayectorias
+#/vis/modeling/trajectories/create/drawByCharge # Dibujar trayectorias por carga
+#/vis/modeling/trajectories/drawByCharge-0/set neutron red # Color rojo para neutrones
+#/vis/scene/add/trajectories                  # Añadir trayectorias a escena
 
-## # ========== Lanzar eventos ==========
-#/run/beamOn 100000
-## Si quieres revisar evento por evento:
-#/vis/reviewKeptEvents
+## ========== Lanzar eventos para visualización ==========
+#/run/beamOn 100000    # Ejecuta 100,000 eventos para visualizar
+## Revisión manual evento a evento
+#/vis/reviewKeptEvents # Revisar eventos retenidos uno por uno
